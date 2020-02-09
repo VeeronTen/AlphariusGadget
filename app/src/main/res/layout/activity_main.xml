@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.MainActivity">
+
+    <TextView
+        android:id="@+id/stunChanseTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/addStunBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="add stun"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stunChanseTv" />
+
+    <Button
+        android:id="@+id/addDrawBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="add draw"
+        app:layout_constraintStart_toStartOf="@+id/addStunBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addStunBtn" />
+
+    <Button
+        android:id="@+id/addDmgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="add dmg"
+        app:layout_constraintStart_toStartOf="@+id/addDrawBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addDrawBtn" />
+
+    <Button
+        android:id="@+id/addKillBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="add kill"
+        app:layout_constraintStart_toStartOf="@+id/addDmgBtn"
+        app:layout_constraintTop_toBottomOf="@+id/addDmgBtn" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="stun chance:"
+        app:layout_constraintEnd_toStartOf="@+id/stunChanseTv"
+        app:layout_constraintTop_toTopOf="@+id/stunChanseTv" />
+</androidx.constraintlayout.widget.ConstraintLayout>
