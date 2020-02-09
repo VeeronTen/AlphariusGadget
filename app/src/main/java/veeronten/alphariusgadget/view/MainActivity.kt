@@ -7,11 +7,13 @@ import io.reactivex.rxkotlin.subscribeBy
 import kotlinx.android.synthetic.main.activity_main.*
 import veeronten.alphariusgadget.R
 import veeronten.alphariusgadget.SourceDeck
-import veeronten.alphariusgadget.computer.StunComputer
+import veeronten.alphariusgadget.computer.FatigueChanceComputer
+import veeronten.alphariusgadget.computer.StunChanceComputer
 
 class MainActivity : AppCompatActivity() {
 
-    val stanComputer = StunComputer()
+    val stunChanceComputer = StunChanceComputer()
+    val fatigueChanceComputer = FatigueChanceComputer()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,18 +38,22 @@ class MainActivity : AppCompatActivity() {
             SourceDeck.addKill()
         }
 
-        stanComputer.computation.subscribeBy(
-            onNext = {
-                stunChanseTv.text = it.toString()// + "%"
-            },
-            onComplete = {
-                Log.d("jojo", "complete")
+        stunChanceComputer.computation.subscribeBy(
+            onNext = { stunChanceTv.text = "$it%" },
+            onComplete = { Log.d("jojo", "stunChanceComputer complete") },
+            onError = { Log.d("jojo", "stunChanceComputer error") }
+        )
 
-            },
-            onError = {
-                Log.d("jojo", "error")
-                it.printStackTrace()
-            }
+        fatigueChanceComputer.computation.subscribeBy(
+            onNext = { fatigueChanceTv.text = "$it%" },
+            onComplete = { Log.d("jojo", "fatigueChanceComputer complete") },
+            onError = { Log.d("jojo", "fatigueChanceComputer error") }
+        )
+
+        SourceDeck.trapsCardsInDeck.subscribeBy(
+            onNext = { trapsCardsTv.text = "${it.first}/${it.second}" },
+            onComplete = { Log.d("jojo", "trapsCardsInDeck complete") },
+            onError = { Log.d("jojo", "trapsCardsInDeck error") }
         )
     }
 }

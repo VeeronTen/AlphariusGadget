@@ -17,5 +17,7 @@ class SourceDeck {
         fun addDmg() = addCard(Card.DMG)
 
         fun addKill() = addCard(Card.KILL)
+
+        val trapsCardsInDeck = deck.map { deck -> Pair(deck.count { it != Card.NONE }, deck.size) }
     }
 }

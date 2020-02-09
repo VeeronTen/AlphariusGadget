@@ -5,5 +5,6 @@ enum class Card(val drawCount: Int, val text: String) {
     STUN(1, "STUN"),
     KILL(1, "KILL"),
     DMG(1, "DMG"),
-    NONE(0, "N")
+    NONE(0, "N"),
+    FATIGUE(0, "FATIGUE")
 }

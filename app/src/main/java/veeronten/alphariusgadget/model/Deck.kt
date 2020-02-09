@@ -10,9 +10,12 @@ class Deck : ArrayList<Card>() {
     }
 
     fun draw(): Card {
-        val randomIndex = Random.nextInt(this.size)
-        val drawedCard = this[randomIndex]
-        this.removeAt(randomIndex)
-        return  drawedCard
+        return if(this.size > 0) {
+            val randomIndex = Random.nextInt(this.size)
+            val drawedCard = this[randomIndex]
+            this.removeAt(randomIndex)
+            drawedCard
+        } else
+            Card.FATIGUE
     }
 }

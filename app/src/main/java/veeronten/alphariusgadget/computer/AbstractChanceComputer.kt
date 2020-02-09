@@ -12,7 +12,7 @@ import veeronten.alphariusgadget.SourceDeck
 import veeronten.alphariusgadget.model.Card
 import veeronten.alphariusgadget.model.Deck
 
-abstract class AbstractComputer {
+abstract class AbstractChanceComputer {
 
     private var localSourceDeck = BehaviorSubject.createDefault(Deck.createDefaultDeck())
     private var computingDeck = Deck()
