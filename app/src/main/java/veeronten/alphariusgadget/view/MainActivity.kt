@@ -38,13 +38,13 @@ class MainActivity : AppCompatActivity() {
             SourceDeck.addKill()
         }
 
-        stunChanceComputer.computation.subscribeBy(
+        stunChanceComputer.chanceComputation.subscribeBy(
             onNext = { stunChanceTv.text = "$it%" },
             onComplete = { Log.d("jojo", "stunChanceComputer complete") },
             onError = { Log.d("jojo", "stunChanceComputer error") }
         )
 
-        fatigueChanceComputer.computation.subscribeBy(
+        fatigueChanceComputer.chanceComputation.subscribeBy(
             onNext = { fatigueChanceTv.text = "$it%" },
             onComplete = { Log.d("jojo", "fatigueChanceComputer complete") },
             onError = { Log.d("jojo", "fatigueChanceComputer error") }
