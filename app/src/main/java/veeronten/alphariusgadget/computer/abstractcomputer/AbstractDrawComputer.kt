@@ -1,52 +1,48 @@
 package veeronten.alphariusgadget.computer.abstractcomputer
 
-import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
-import veeronten.alphariusgadget.SourceDeck
-import veeronten.alphariusgadget.model.Card
 import veeronten.alphariusgadget.model.Deck
+import veeronten.alphariusgadget.model.DrawedCards
+import veeronten.alphariusgadget.model.FullDrawInfo
+import java.util.concurrent.TimeUnit
 
-abstract class AbstractDrawComputer {
+abstract class AbstractDrawComputer(val sourceDeck: Deck) {
 
-    private var localSourceDeck = BehaviorSubject.createDefault(Deck.createDefaultDeck())
     private var computingDeck = Deck()
 
     private var toDrawCount = 1
-    private val drawedCards = mutableListOf<Card>()
-
-    abstract fun sourceUpdated()
+    private val drawedCards = DrawedCards()
 
     init {
-        SourceDeck.deck.subscribeBy(
-            onNext = {
-                localSourceDeck.onNext(it)
-                sourceUpdated()
-            },
+        sourceDeck.updated.subscribeBy(
+            onNext = { fullClean() },
             onComplete = {},
             onError = {}
         )
     }
-
-    val draws = Flowable.create<MutableList<Card>>({ emitter ->
-        while(true) {
-            prepareCleanComputation()
+    val draws = Flowable.interval(10, TimeUnit.MICROSECONDS).onBackpressureDrop()
+        .observeOn(Schedulers.computation())
+        .doOnNext {
+            iterationClean()
             drawSequence()
-            emitter.onNext(drawedCards)
         }
-    }, BackpressureStrategy.LATEST)
-    .subscribeOn(Schedulers.computation())
-    .observeOn(AndroidSchedulers.mainThread())
+        .map { FullDrawInfo(computingDeck, drawedCards) }
 
-    private fun prepareCleanComputation() {
+    private fun iterationClean() {
         toDrawCount = 1
         drawedCards.clear()
         computingDeck.clear()
-        computingDeck.addAll(localSourceDeck.value!!)
+        computingDeck.addAll(sourceDeck)
     }
+    private fun showDraws() {
+
+    }
+
+    abstract fun fullClean()
+
 
     private fun drawSequence() {
         while (toDrawCount > 0) {
@@ -55,6 +51,7 @@ abstract class AbstractDrawComputer {
             toDrawCount--
             toDrawCount += drawedCard.drawCount
         }
+//        Log.d("jojo", " 1:    $computingDeck   ->   $drawedCards")
     }
 
 }

@@ -20,38 +20,38 @@
         android:id="@+id/addStunBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginStart="16dp"
         android:text="add stun"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fatigueChanceTv" />
+        app:layout_constraintBottom_toBottomOf="@+id/stunCounterTv"
+        app:layout_constraintStart_toEndOf="@+id/stunCounterTv"
+        app:layout_constraintTop_toTopOf="@+id/stunCounterTv" />
 
     <Button
         android:id="@+id/addDrawBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="add draw"
+        app:layout_constraintBottom_toBottomOf="@+id/drawCounterTv"
         app:layout_constraintStart_toStartOf="@+id/addStunBtn"
-        app:layout_constraintTop_toBottomOf="@+id/addStunBtn" />
+        app:layout_constraintTop_toTopOf="@+id/drawCounterTv" />
 
     <Button
         android:id="@+id/addDmgBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="add dmg"
+        app:layout_constraintBottom_toBottomOf="@+id/dmgCounterTv"
         app:layout_constraintStart_toStartOf="@+id/addDrawBtn"
-        app:layout_constraintTop_toBottomOf="@+id/addDrawBtn" />
+        app:layout_constraintTop_toTopOf="@+id/dmgCounterTv" />
 
     <Button
         android:id="@+id/addKillBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:text="add kill"
+        app:layout_constraintBottom_toBottomOf="@+id/killCounterTv"
         app:layout_constraintStart_toStartOf="@+id/addDmgBtn"
-        app:layout_constraintTop_toBottomOf="@+id/addDmgBtn" />
+        app:layout_constraintTop_toTopOf="@+id/killCounterTv" />
 
     <TextView
         android:id="@+id/textView"
@@ -95,4 +95,117 @@
         android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/stunChanceTv"
         app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/rgrgrg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="average traps:"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="awerage cards:"
+        app:layout_constraintStart_toStartOf="@+id/rgrgrg"
+        app:layout_constraintTop_toBottomOf="@+id/rgrgrg" />
+
+    <TextView
+        android:id="@+id/trapsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/fatigueChanceTv"
+        app:layout_constraintTop_toBottomOf="@+id/fatigueChanceTv" />
+
+    <TextView
+        android:id="@+id/cardsTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/trapsTv"
+        app:layout_constraintTop_toBottomOf="@+id/trapsTv" />
+
+    <TextView
+        android:id="@+id/stunCounterTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardsTv" />
+
+    <TextView
+        android:id="@+id/drawCounterTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/stunCounterTv"
+        app:layout_constraintStart_toStartOf="@+id/stunCounterTv"
+        app:layout_constraintTop_toBottomOf="@+id/stunCounterTv" />
+
+    <TextView
+        android:id="@+id/dmgCounterTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/drawCounterTv"
+        app:layout_constraintStart_toStartOf="@+id/drawCounterTv"
+        app:layout_constraintTop_toBottomOf="@+id/drawCounterTv" />
+
+    <TextView
+        android:id="@+id/killCounterTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/dmgCounterTv"
+        app:layout_constraintStart_toStartOf="@+id/dmgCounterTv"
+        app:layout_constraintTop_toBottomOf="@+id/dmgCounterTv" />
+
+    <Button
+        android:id="@+id/reduseStunBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="reduse stun"
+        app:layout_constraintBottom_toBottomOf="@+id/stunCounterTv"
+        app:layout_constraintEnd_toStartOf="@+id/stunCounterTv"
+        app:layout_constraintTop_toTopOf="@+id/stunCounterTv" />
+
+    <Button
+        android:id="@+id/reduseDrawBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="reduse draw"
+        app:layout_constraintBottom_toBottomOf="@+id/drawCounterTv"
+        app:layout_constraintEnd_toEndOf="@+id/reduseStunBtn"
+        app:layout_constraintTop_toTopOf="@+id/drawCounterTv" />
+
+    <Button
+        android:id="@+id/reduseDmgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="reduse dmg"
+        app:layout_constraintBottom_toBottomOf="@+id/dmgCounterTv"
+        app:layout_constraintEnd_toEndOf="@+id/reduseDrawBtn"
+        app:layout_constraintTop_toTopOf="@+id/dmgCounterTv" />
+
+    <Button
+        android:id="@+id/reduseKillBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="reduse kill"
+        app:layout_constraintBottom_toBottomOf="@+id/killCounterTv"
+        app:layout_constraintEnd_toEndOf="@+id/reduseDmgBtn"
+        app:layout_constraintTop_toTopOf="@+id/killCounterTv" />
 </androidx.constraintlayout.widget.ConstraintLayout>

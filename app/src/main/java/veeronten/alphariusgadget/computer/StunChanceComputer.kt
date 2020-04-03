@@ -2,7 +2,9 @@ package veeronten.alphariusgadget.computer
 
 import veeronten.alphariusgadget.computer.abstractcomputer.AbstractDrawChanceComputer
 import veeronten.alphariusgadget.model.Card
+import veeronten.alphariusgadget.model.Deck
+import veeronten.alphariusgadget.model.FullDrawInfo
 
-class StunChanceComputer : AbstractDrawChanceComputer() {
-    override fun makeDecision(drawedCards: MutableList<Card>) = drawedCards.contains(Card.STUN)
+class StunChanceComputer(sourceDeck: Deck) : AbstractDrawChanceComputer(sourceDeck) {
+    override fun makeDecision(drawInfo: FullDrawInfo) = drawInfo.drawedCards.contains(Card.STUN)
 }

@@ -1,16 +1,16 @@
 package veeronten.alphariusgadget.computer.abstractcomputer
 
-import android.util.Log
-import veeronten.alphariusgadget.model.Card
+import veeronten.alphariusgadget.model.Deck
+import veeronten.alphariusgadget.model.FullDrawInfo
 
-abstract class AbstractDrawChanceComputer : AbstractDrawComputer() {
+abstract class AbstractDrawChanceComputer(sourceDeck: Deck) : AbstractDrawComputer(sourceDeck) {
 
     private var success = 0
     private var all = 0
 
     private var prevEmitted: Int? = null
 
-    abstract fun makeDecision(drawedCards: MutableList<Card>): Boolean
+    abstract fun makeDecision(drawInfo: FullDrawInfo): Boolean
 
 
     val chanceComputation = draws
@@ -18,7 +18,7 @@ abstract class AbstractDrawChanceComputer : AbstractDrawComputer() {
             if(makeDecision(it)) success++
             all++
         }
-        .map { ((success.toFloat() / all.toFloat()) * 100).toInt() }
+        .map { ((success.toDouble() / all.toDouble()) * 100).toInt() }
         .filter { prevEmitted == null || diffIsSignificant(prevEmitted!!, it) }
         .doOnNext {
             prevEmitted = it
@@ -26,17 +26,12 @@ abstract class AbstractDrawChanceComputer : AbstractDrawComputer() {
 
     private fun diffIsSignificant(prevEmitted: Int, gonnaEmit: Int) = Math.abs(prevEmitted - gonnaEmit) != 0
 
-    override fun sourceUpdated() {
+    override fun fullClean() {
+//        Log.d("jojo", "CLEAN BB")
+//        Log.d("jojo", "$success / $all")
         success = 0
         all = 0
         prevEmitted = null
-    }
-
-    fun printCase(sequense: MutableList<Card>) {
-        var result = ""
-        sequense.forEach {
-            result += "${it.text} -> "
-        }
-        Log.d("jojo", result)
+//        Log.d("jojo", "$success / $all")
     }
 }
